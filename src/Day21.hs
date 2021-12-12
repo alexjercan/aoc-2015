@@ -1,4 +1,4 @@
-module Day01 where
+module Day21 where
 
 solve :: String -> IO ()
 solve = return . const ()

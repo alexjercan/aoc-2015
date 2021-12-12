@@ -11,8 +11,32 @@ extra-source-files:
 
 executable Aoc2015
     main-is:          Main.hs
-    build-depends:    base ^>=4.13.0.0
-    other-modules:    Day01
+
+    build-depends:    base ^>=4.13.0.0,
+                      mtl, split, http-conduit, http-types, bytestring,
+                      exceptions, dotenv, containers, matplotlib
+    other-modules:    Day01, Day02, Day03, Day04, Day05, Day06, Day07, Day08,
+                      Day09, Day10, Day11, Day12, Day13, Day14, Day15, Day16,
+                      Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24,
+                      Day25, Visual.Day11
     hs-source-dirs:   src
     default-language: Haskell2010
 
+test-suite Aoc2015Test
+    type:             exitcode-stdio-1.0
+    main-is:          Main.hs
+    ghc-options:      -Wall -rtsopts
+    build-depends:    base ^>=4.13.0.0,
+                      mtl, split, HTF > 0.9, containers
+    other-modules:    Day01Test, Day02Test, Day03Test, Day04Test, Day05Test,
+                      Day06Test, Day07Test, Day08Test, Day09Test, Day10Test,
+                      Day11Test, Day12Test, Day13Test, Day14Test, Day15Test,
+                      Day16Test, Day17Test, Day18Test, Day19Test, Day20Test,
+                      Day21Test, Day22Test, Day23Test, Day24Test, Day25Test,
+                      Day01, Day02, Day03, Day04, Day05, Day06, Day07, Day08,
+                      Day09, Day10, Day11, Day12, Day13, Day14, Day15, Day16,
+                      Day17, Day18, Day19, Day20, Day21, Day22, Day23, Day24,
+                      Day25
+    hs-source-dirs:   test,
+                      src
+    default-language: Haskell2010
