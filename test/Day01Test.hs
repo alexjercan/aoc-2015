@@ -6,7 +6,7 @@ import Day01
 import Test.Framework
 
 sampleInput :: String
-sampleInput = ""
+sampleInput = "((())))(\n"
 
 test_solve1 :: IO ()
 test_solve1 = do
@@ -14,4 +14,4 @@ test_solve1 = do
 
 test_solve2 :: IO ()
 test_solve2 = do
-    assertEqual 0 $ solve2 sampleInput
+    assertEqual 7 $ solve2 sampleInput
