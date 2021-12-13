@@ -1,15 +1,23 @@
 module Day01 where
 
-type Input = String
+import Util ( rstrip )
+import Control.Arrow ((&&&))
+
+type Input = [Int]
 
 parseContent :: String -> Input
-parseContent = id
+parseContent = map parseParen . rstrip
 
-solve1 :: Input -> ()
-solve1 = const ()
+parseParen :: Char -> Int
+parseParen '(' = 1
+parseParen ')' = -1
+parseParen _ = undefined
 
-solve2 :: Input -> ()
-solve2 = const ()
+solve1 :: Input -> Int
+solve1 = sum
+
+solve2 :: Input -> Int
+solve2 = fst . head . dropWhile ((>=0) . snd) . zip [1..] . scanl1 (+)
 
 solve :: String -> String
-solve = id
+solve = show . (solve1 &&& solve2) . parseContent
