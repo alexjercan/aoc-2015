@@ -6,8 +6,10 @@ Day%Test.hs:
 	cabal test
 
 Day%.hs:
-	cabal run Aoc2015 $*
+	cabal run Aoc2015 $* < input/day$*.input
 
 %.hs:
 	cabal test
 
+%:
+	cabal run Aoc2015 $* < input/day$(shell printf '%02d' $*).input
