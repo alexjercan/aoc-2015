@@ -1,12 +1,15 @@
 module Day08 where
 
-import Control.Arrow ((&&&))
+type Input = String
 
-solve1 :: String -> Int
-solve1 = const 0
+parseContent :: String -> Input
+parseContent = id
 
-solve2 :: String -> Int
-solve2 = const 0
+solve1 :: Input -> ()
+solve1 = const ()
 
-solve :: String -> IO ()
-solve = print . (solve1 &&& solve2)
+solve2 :: Input -> ()
+solve2 = const ()
+
+solve :: String -> String
+solve = id

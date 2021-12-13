@@ -5,13 +5,14 @@ module Day14Test where
 import Day14
 import Test.Framework
 
-sampleInput :: String
-sampleInput = ""
+sampleInput1 :: Input
+sampleInput1 = mempty
+
+sampleOutput1 :: ()
+sampleOutput1 = ()
 
 test_solve1 :: IO ()
-test_solve1 = do
-    assertEqual 0 $ solve1 sampleInput
+test_solve1 = assertFailure "Not Implemented"
 
 test_solve2 :: IO ()
-test_solve2 = do
-    assertEqual 0 $ solve2 sampleInput
+test_solve2 = assertFailure "Not Implemented"
