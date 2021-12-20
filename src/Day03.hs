@@ -1,10 +1,11 @@
 {-# LANGUAGE DeriveFunctor #-}
 module Day03 where
 
-import Util (charP, Parser, manyP, parse, counter)
+import Util.Parser (charP, Parser, manyP, parse)
 import Control.Applicative ((<|>))
 import Control.Arrow ((&&&))
 import qualified Data.Map as M
+import Util.Extra (counter)
 
 data Position a = Position a a deriving (Show, Ord, Eq, Functor)
 

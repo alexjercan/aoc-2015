@@ -1,6 +1,6 @@
 module Day01 where
 
-import Util ( rstrip )
+import Util.Extra ( rstrip )
 import Control.Arrow ((&&&))
 
 type Input = [Int]

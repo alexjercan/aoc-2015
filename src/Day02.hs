@@ -1,6 +1,6 @@
 module Day02 where
 
-import Util (Parser, integerP, charP, parseList)
+import Util.Parser (Parser, integerP, charP, parseList)
 import Control.Arrow ((&&&))
 
 data Rectangle = Rectangle Int Int Int deriving Show
