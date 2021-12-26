@@ -1,15 +1,26 @@
 module Day08 where
 
-type Input = String
+import Control.Arrow ( Arrow((&&&)) )
+import Data.List (isInfixOf)
 
-parseContent :: String -> Input
-parseContent = id
+type Input = [String]
 
-solve1 :: Input -> ()
-solve1 = const ()
+cringeRegex :: String -> Int
+cringeRegex [] = -2
+cringeRegex ('\\':'\\':xs) = 1 + cringeRegex xs
+cringeRegex ('\\':'"':xs) = 1 + cringeRegex xs
+cringeRegex ('\\':'x':_:_:xs) = 1 + cringeRegex xs
+cringeRegex (x:xs) = 1 + cringeRegex xs
 
-solve2 :: Input -> ()
-solve2 = const ()
+parseContent = lines
+
+solve1 xs = g xs - f xs
+    where f = sum . map cringeRegex
+          g = sum . map length
+
+solve2 xs = f xs - g xs
+    where f = sum . map (length . show)
+          g = sum . map length
 
 solve :: String -> String
-solve = id
+solve = show . (solve1 &&& solve2) . parseContent

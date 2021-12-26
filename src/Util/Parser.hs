@@ -1,6 +1,6 @@
 module Util.Parser where
 
-import Text.Parsec (Parsec, ParseError, many1, digit, upper, char, string, space, oneOf, optionMaybe, eof)
+import Text.Parsec (Parsec, ParseError, many1, digit, upper, char, string, space, oneOf, optionMaybe, eof, letter)
 import qualified Text.Parsec as Parsec
 import Data.Char (digitToInt)
 import Util.Binary (binToInt)
@@ -17,12 +17,15 @@ parseList p = either (error . show) id . mapM (parse p)
 naturalP :: Parser Int
 naturalP = read <$> many1 digit
 
-integerP :: Parser Int
-integerP = do
+intP :: Parser Int
+intP = do
     s <- optionMaybe (oneOf "+-")
     case s of
       Just '-' -> ((-1)*) <$> naturalP
       _        -> naturalP
+
+word :: Parser String
+word = many1 letter
 
 upperSP :: Parser String
 upperSP = many1 upper

@@ -1,6 +1,6 @@
 module Day02 where
 
-import Util.Parser (Parser, integerP, charP, parseList)
+import Util.Parser (Parser, intP, charP, parseList)
 import Control.Arrow ((&&&))
 
 data Rectangle = Rectangle Int Int Int deriving Show
@@ -8,11 +8,11 @@ type Input = [Rectangle]
 
 rectangleParser :: Parser Rectangle
 rectangleParser = do
-    a <- integerP
+    a <- intP
     charP 'x'
-    b <- integerP
+    b <- intP
     charP 'x'
-    Rectangle a b <$> integerP
+    Rectangle a b <$> intP
 
 parseContent :: String -> Input
 parseContent = parseList rectangleParser . lines
