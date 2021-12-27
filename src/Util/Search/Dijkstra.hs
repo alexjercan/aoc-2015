@@ -1,4 +1,4 @@
-module Util.Search where
+module Util.Search.Dijkstra where
 
 import Control.Monad.State
     ( MonadState(get, put)

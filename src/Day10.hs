@@ -1,15 +1,26 @@
 module Day10 where
 
-type Input = String
+import Data.Char (digitToInt)
+import Control.Arrow (Arrow((&&&)))
+import Util.Extra (rstrip)
+import Data.List (group)
+
+type Input = [Int]
 
 parseContent :: String -> Input
-parseContent = id
+parseContent = map digitToInt . rstrip
 
-solve1 :: Input -> ()
-solve1 = const ()
+step :: [Int] -> [Int]
+step = concatMap (\xs -> [length xs, head xs]) . group
 
-solve2 :: Input -> ()
-solve2 = const ()
+solution :: Int -> [Int] -> Int
+solution n = length . (!!n) . iterate step
+
+solve1 :: [Int] -> Int
+solve1 = solution 40
+
+solve2 :: [Int] -> Int
+solve2 = solution 50
 
 solve :: String -> String
-solve = id
+solve = show . (solve1 &&& solve2) . parseContent
