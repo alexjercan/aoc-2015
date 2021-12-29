@@ -19,6 +19,9 @@ counterW = foldl (\m (x, v) -> M.insertWith (+) x v m) M.empty
 mkPairs :: [a] -> [(a, a)]
 mkPairs = zip <*> tail
 
+mkPairs' :: [a] -> [(a, a)]
+mkPairs' = zip <*> (tail . cycle)
+
 subsets :: (Eq t, Num t) => t -> [a] -> [[a]]
 subsets 0 _ = [[]]
 subsets _ [] = []
