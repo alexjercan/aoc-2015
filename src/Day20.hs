@@ -1,15 +1,28 @@
 module Day20 where
 
-type Input = String
+import Control.Arrow (Arrow((&&&)))
+import Data.List (find)
+import Util.Factor (allFactors)
+
+type Input = Int
 
 parseContent :: String -> Input
-parseContent = id
+parseContent = read
 
-solve1 :: Input -> ()
-solve1 = const ()
+score :: Int -> Int
+score n = 10 * sum (allFactors n)
 
-solve2 :: Input -> ()
-solve2 = const ()
+score' :: Int -> Int
+score' n = 11 * sum (filter ((<= 50) . div n) (allFactors n))
+
+solution :: Int -> (Int -> Int) -> Maybe Int
+solution x s = find ((x <=) . s) [2 ..]
+
+solve1 :: Int -> Maybe Int
+solve1 x = solution x score
+
+solve2 :: Int -> Maybe Int
+solve2 x = solution x score'
 
 solve :: String -> String
-solve = id
+solve = show . (solve1 &&& solve2) . parseContent
